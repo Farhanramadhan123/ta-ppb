@@ -1,0 +1,162 @@
+:root {
+  --primary-color: #f5f3f8;
+  --secondary-color: #00e5ff;
+  --accent-color: #ffd600;
+  --background-color: #1a1a2e;
+  --card-background: #16213e;
+  --text-color: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --transition-speed: 0.3s;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+.top5-games-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+.top5-games-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 40px;
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px var(--shadow-color);
+}
+
+.game-item {
+  display: flex;
+  margin-bottom: 30px;
+  background-color: var(--card-background);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: transform var(--transition-speed) ease;
+}
+
+.game-item:hover {
+  transform: translateY(-5px);
+}
+
+.game-item-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-right: 3px solid var(--accent-color);
+}
+
+.game-item-content {
+  flex-grow: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.game-item-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.game-item-description {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.game-item-link {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+  align-self: flex-start;
+  padding: 8px 15px;
+  background-color: rgba(0, 229, 255, 0.1);
+  border-radius: 20px;
+}
+
+.game-item-link:hover {
+  color: var(--accent-color);
+  background-color: rgba(255, 214, 0, 0.1);
+}
+
+.no-games-message {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 40px;
+  background-color: var(--card-background);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .game-item {
+    flex-direction: column;
+  }
+
+  .game-item-image {
+    width: 100%;
+    height: 200px;
+    border-right: none;
+    border-bottom: 3px solid var(--accent-color);
+  }
+
+  .game-item-title {
+    font-size: 1.5rem;
+  }
+
+  .game-item-description {
+    font-size: 1rem;
+  }
+
+  .game-item-link {
+    font-size: 1rem;
+  }
+}
+
+/* Add some animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.top5-games-title {
+  animation: pulse 3s infinite;
+}
+
+.game-item::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--accent-color));
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+}
+
+.game-item:hover::before {
+  opacity: 1;
+}
+
